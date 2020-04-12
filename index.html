@@ -3,9 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
   <title>Dailies - todo web app</title>
 </head>
 <body>
-  
+
+  <!-- Prompt -->
+  <section id="js-prompt" class="prompt">
+    <p>Welcome!</p>
+    <input id="js-input-name" type="text" placeholder="enter your name" required>
+    <button id="js-button" type="submit">icon -></button>
+  </section>
+  <!-- Prompt -->
+
+  <main id="js-todo" class="noDisplay">
+
+    <h1><span id="js-display-name">Name</span>'s Dailies</h1>
+
+    <section>
+      <div>
+        <span>trash</span>
+        <input type="text">
+        <span>check</span>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="./logic.js"></script>
 </body>
 </html>
