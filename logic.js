@@ -9,7 +9,7 @@ let inputTodo = document.getElementById('js-input-todo');
 let buttonNew = document.getElementById('js-button-new');
 
 let list = document.getElementById('js-list');
-let listItem = '<div class="list-item"><span>trash</span><p class="insert"></p><span>check</span></div>';
+let listItem = '<div class="list-item"><i class="fas fa-trash-alt"></i><p class="insert"></p><i class="far fa-check-circle"></i></div>';
 
 //Manipulation
 button.addEventListener('click', getName);
