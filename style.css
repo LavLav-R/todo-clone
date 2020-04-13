@@ -55,7 +55,53 @@ body {
   box-shadow: 0 0 3px var(--accent);
 }
 /* Todo - Main */
+main {
+  background-color: var(--offset);
+  border-radius: 5px;
+  padding: 2rem 4rem;
+  box-shadow: 0 0 2px var(--offset1);
 
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-row-gap: 1rem;
+}
+main > h1, span {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 300;
+}
+main > .list > .list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+}
+main > .list > div > i {
+  cursor: pointer;
+}
+main > .list > div > i:nth-child(1) {
+  font-size: 1rem;
+  color: red;
+}
+main > .list > div > p {
+  margin: 0 8px 0 8px;
+  flex: 1;
+}
+main > .list > div > i:nth-child(3) {
+  font-size: 1.5rem;
+  color: grey;
+}
+main > .list > div > i:nth-child(3):hover {
+  color: green;
+}
+main > input {
+  background-color: var(--background);
+  border: 1px solid var(--accent);
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-weight: bold;
+}
 
 /* Utilities */
 .noDisplay {
