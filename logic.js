@@ -27,6 +27,7 @@ function addListeners(){
     });
     listItems[x].children[2].addEventListener('click', () => {
       listItems[x].children[1].classList.add('strike');
+      listItems[x].children[2].style.color = "green";
     });
   };
 };
