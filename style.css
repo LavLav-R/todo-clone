@@ -18,8 +18,23 @@ body {
   grid-template-rows: repeat(3, 1fr);
   grid-row-gap: 10px;
 }
+/* Todos */
+
 
 /* Utilities */
 .noDisplay {
   display: none;
 }
+/* .strike {
+  position: relative;
+  display: inline;
+}
+.strike::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  border: 1px solid black;
+} */
