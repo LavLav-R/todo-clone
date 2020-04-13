@@ -25,16 +25,14 @@ body {
 .noDisplay {
   display: none;
 }
-/* .strike {
+.strike {
   position: relative;
-  display: inline;
 }
 .strike::after {
-  content: '';
-  width: 10px;
-  height: 10px;
   position: absolute;
+  content: '';
   top: 50%;
   left: 0;
-  border: 1px solid black;
-} */
+  width: 100%;
+  border: 1px solid black; /*Coloring*/
+}

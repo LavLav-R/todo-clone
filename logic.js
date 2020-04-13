@@ -9,8 +9,7 @@ let inputTodo = document.getElementById('js-input-todo');
 let buttonNew = document.getElementById('js-button-new');
 
 let list = document.getElementById('js-list');
-let listItem = '<div class="list-item"><span>trash</span><p class="insert"></p><button>check</button></div>';
-
+let listItem = '<div class="list-item"><span>trash</span><p class="insert"></p><span>check</span></div>';
 
 //State
 
@@ -22,21 +21,28 @@ function getName(){
   displayName.innerText = inputName.value;
 };
 
-// function reRun(){
-//   for(let x = 0; x < btnNext.length; x++){
-//     btnNext[x].addEventListener('click', addTodo);
-//   };
-//   console.log(btnNext.length);
-// };
-// reRun();
+function addListeners(){
+  let listItems = document.querySelectorAll('.list-item');
+  for(let x = 0; x < listItems.length; x++){
+    listItems[x].children[0].addEventListener('click', () => {
+      listItems[x].remove();
+    });
+    listItems[x].children[2].addEventListener('click', () => {
+      listItems[x].children[1].classList.add('strike');
+    });
+  };
+};
+
 buttonNew.addEventListener('click', addTodo);
 function addTodo(){
   //check any text exist in the previous one before adding
   //add classlist styling
   //Add Item to List
   list.insertAdjacentHTML('beforeend', listItem);
-  let demo = document.querySelectorAll('.insert');
-  demo[demo.length - 1].innerText = inputTodo.value;
+  let insert = document.querySelectorAll('.insert');
+  insert[insert.length - 1].innerText = inputTodo.value;
   //Make Blank
   inputTodo.value = "";
+
+  addListeners();
 };
