@@ -25,6 +25,9 @@ body {
 .noDisplay {
   display: none;
 }
+.emptyEffect{
+  border: 1px solid red;
+}
 .strike {
   position: relative;
 }

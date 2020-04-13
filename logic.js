@@ -35,14 +35,17 @@ function addListeners(){
 
 buttonNew.addEventListener('click', addTodo);
 function addTodo(){
-  //check any text exist in the previous one before adding
-  //add classlist styling
-  //Add Item to List
-  list.insertAdjacentHTML('beforeend', listItem);
-  let insert = document.querySelectorAll('.insert');
-  insert[insert.length - 1].innerText = inputTodo.value;
-  //Make Blank
-  inputTodo.value = "";
+  if(!inputTodo.value){
+    inputTodo.classList.add('emptyEffect');
+    inputTodo.setAttribute('placeholder', "please enter a todo");
+  } else {
+    //Add Item to List
+    list.insertAdjacentHTML('beforeend', listItem);
+    let insert = document.querySelectorAll('.insert');
+    insert[insert.length - 1].innerText = inputTodo.value;
+    //Make Blank
+    inputTodo.value = "";
 
-  addListeners();
+    addListeners();
+  };
 };
