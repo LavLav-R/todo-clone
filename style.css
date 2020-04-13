@@ -1,8 +1,16 @@
 /* Basic Setup */
+:root {
+  --background: #bfd7b5;
+  --offset: #e7efc5;
+  --accent: #413c58;
+}
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
 }
 body {
   height: 100vh;

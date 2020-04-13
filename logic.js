@@ -11,8 +11,6 @@ let buttonNew = document.getElementById('js-button-new');
 let list = document.getElementById('js-list');
 let listItem = '<div class="list-item"><span>trash</span><p class="insert"></p><span>check</span></div>';
 
-//State
-
 //Manipulation
 button.addEventListener('click', getName);
 function getName(){
