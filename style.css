@@ -3,6 +3,7 @@
   --background: #bfd7b5;
   --offset: #e7efc5;
   --accent: #413c58;
+  --offset1: #302c41;
 }
 * {
   padding: 0;
@@ -17,20 +18,41 @@ body {
 
   display: grid;
   place-content: center;
+
+  background-color: var(--background);
 }
 /* Prompt */
 .prompt {
+  background-color: var(--offset);
+  border-radius: 5px;
+  padding: 2rem;
+  box-shadow: 0 0 2px var(--offset1);
 
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(3, 1fr);
-  grid-row-gap: 10px;
+  grid-row-gap: 1rem;
+}
+.prompt > p {
+  font-size: 2.5rem;
+  font-weight: 300;
 }
 .prompt > p, input {
   text-align: center;
+  align-self: center;
 }
 .prompt > button {
   justify-self: center;
+}
+.prompt > input {
+  background-color: var(--background);
+  border: 1px solid var(--accent);
+  border-radius: 5px;
+  padding: 1em 3em;
+  font-weight: bold;
+}
+.prompt > input:focus {
+  box-shadow: 0 0 3px var(--accent);
 }
 /* Todo - Main */
 
@@ -55,4 +77,13 @@ body {
 }
 i {
   font-size: 2rem;
+}
+button {
+  border: none;
+  cursor: pointer;
+  color: var(--accent);
+  background-color: var(--offset);
+}
+button:hover {
+  color: var(--offset1);
 }
