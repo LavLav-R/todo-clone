@@ -39,6 +39,8 @@ function addTodo(){
     inputTodo.classList.add('emptyEffect');
     inputTodo.setAttribute('placeholder', "please enter a todo");
   } else {
+    inputTodo.classList.remove('emptyEffect');
+    inputTodo.setAttribute('placeholder', "add todos!");
     //Add Item to List
     list.insertAdjacentHTML('beforeend', listItem);
     let insert = document.querySelectorAll('.insert');
