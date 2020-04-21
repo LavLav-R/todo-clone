@@ -8,8 +8,6 @@ let todo = document.getElementById('js-todo');
 let inputTodo = document.getElementById('js-input-todo');
 let buttonNew = document.getElementById('js-button-new');
 
-let list = document.getElementById('js-start');
-
 //Manipulation
 //-----------------------------------------------------------------------------
 //Prompt > Main ---------------------------------------------------------------
@@ -75,7 +73,7 @@ function addTodo(){
       listItem.appendChild(span2);
       listItem.setAttribute('id', count);
 
-      list.insertAdjacentElement('beforeend', listItem);
+      start.insertAdjacentElement('beforeend', listItem);
 
       count++;
     };
@@ -131,6 +129,6 @@ function dropHandler(e){
   var elID = e.dataTransfer.getData('text/plain');
   var element = document.getElementById(elID);
   this.appendChild(element);
-  //Make it Visible Again
+  //Make it Visible
   element.classList.remove('visible');
 };
