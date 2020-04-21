@@ -108,7 +108,6 @@ main > #js-start, #js-end {
 }
 main > #js-start {
   background-color: var(--offset);
-  min-height: 100px; /*TESTING*/
   grid-column: 1 / 2;
 }
 main > #js-end {

@@ -80,6 +80,9 @@ function addTodo(){
     //Only Insert New Items in Start
     let startList = start.querySelectorAll('.insert');
     startList[startList.length - 1].innerText = inputTodo.value;
+    //Make Parent change Height
+    let setHeight = start.offsetHeight + 35;
+    start.style.height = `${setHeight}px`;
     //Make Input Blank on Addition
     inputTodo.value = "";
     //Rerun to Add Listeners to new Items
