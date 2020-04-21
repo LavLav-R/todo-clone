@@ -130,7 +130,6 @@ main > div > input {
   border: 1px solid var(--offsetAccent);
   border-radius: 5px;
   padding: .5em 1em;
-  font-weight: bold;
 }
 main > div > input:focus {
   box-shadow: 0 0 2px var(--accent);
