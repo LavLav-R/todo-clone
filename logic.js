@@ -133,3 +133,15 @@ function dropHandler(e){
   //Make it Visible
   element.classList.remove('visible');
 };
+
+//-----------------------------------------------------------------------------
+//Reset Function --------------------------------------------------------------
+//-----------------------------------------------------------------------------
+const resetButton = document.getElementById('js-reset');
+resetButton.addEventListener('click', reset);
+function reset(){
+  const endList = end.querySelectorAll('.list-item');
+  for(let x = 0; x < endList.length; x++){
+    start.appendChild(endList[x]);
+  };
+};
