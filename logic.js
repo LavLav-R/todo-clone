@@ -15,7 +15,8 @@ let list = document.getElementById('js-start');
 //Prompt > Main ---------------------------------------------------------------
 //-----------------------------------------------------------------------------
 button.addEventListener('click', getName);
-function getName(){
+function getName(e){
+  e.preventDefault();
   prompt.classList.add('noDisplay');
   todo.classList.remove('noDisplay');
   displayName.innerText = inputName.value;
