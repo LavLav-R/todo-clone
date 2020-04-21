@@ -77,9 +77,10 @@ function addTodo(){
 
       count++;
     };
-    let insert = document.querySelectorAll('.insert');
-    insert[insert.length - 1].innerText = inputTodo.value;
-    //Make Blank
+    //Only Insert New Items in Start
+    let startList = start.querySelectorAll('.insert');
+    startList[startList.length - 1].innerText = inputTodo.value;
+    //Make Input Blank on Addition
     inputTodo.value = "";
     //Rerun to Add Listeners to new Items
     addListeners();
