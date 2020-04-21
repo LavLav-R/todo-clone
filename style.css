@@ -9,6 +9,7 @@
   --text: #EEF0EB;
 
   --alert: #B33951;
+  --success: lightgreen;
 }
 * {
   padding: 0;
@@ -83,11 +84,6 @@ body {
 /* MAIN - TODO ------------------------------------------------------------- */
 /* ------------------------------------------------------------------------- */
 main {
-  /* background-color: var(--offset); */
-  /* border-radius: 5px; */
-  /* padding: 2rem 4rem; */
-  /* box-shadow: 0 0 2px var(--offset1); */
-
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
@@ -113,6 +109,7 @@ main > #js-end {
 }
 main > div > .title {
   border-bottom: 2px solid var(--accent);
+  padding-bottom: .5em;
   margin-bottom: 1em;
 }
 main > .group4 {
@@ -140,7 +137,7 @@ main > div > button > i {
 main > div > button > i:hover {
   color: var(--accent);
 }
-/* listItem */
+/* listItem  for Start */
 main > #js-start > .list-item {
   display: flex;
   justify-content: space-between;
@@ -151,7 +148,6 @@ main > #js-start > .list-item {
 main > #js-start > .list-item:hover {
   border-bottom: 2px solid var(--background);
 }
-/* Children of list-item */
 main > #js-start > .list-item > span:nth-child(1) {
   display: none;
 }
@@ -169,6 +165,46 @@ main > #js-start > .list-item > p {
 }
 main > #js-start > .list-item > span:nth-child(3) {
   display: none;
+}
+/* listItem  for End */
+main > #js-end > .list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .5em 0;
+  cursor: grab;
+}
+main > #js-end > .list-item:hover {
+  border-bottom: 2px solid var(--background);
+}
+main > #js-end > .list-item > span:nth-child(1) {
+  display: none;
+}
+main > #js-end > .list-item:hover span:nth-child(1) {
+  font-size: 1rem;
+  color: var(--alert);
+  cursor: pointer;
+  width: 10px;
+  height: 100%;
+  display: inline-block;
+}
+main > #js-end > .list-item > p {
+  margin: 0 .8em;
+  flex: 1;
+
+  position: relative;
+  color: grey;
+}
+main > #js-end > .list-item > p::after {
+  position: absolute;
+  content: '';
+  top: 50%;
+  left: 0;
+  width: 100%;
+  border: 1px solid grey;
+}
+main > #js-end > .list-item > span:nth-child(3) {
+  color: var(--success);
 }
 
 /* ------------------------------------------------------------------------- */
