@@ -8,10 +8,12 @@ let todo = document.getElementById('js-todo');
 let inputTodo = document.getElementById('js-input-todo');
 let buttonNew = document.getElementById('js-button-new');
 
-let list = document.getElementById('js-list');
-let listItem = '<div class="list-item"><i class="fas fa-trash-alt"></i><p class="insert"></p><i class="far fa-check-circle"></i></div>';
+let list = document.getElementById('js-start');
 
 //Manipulation
+//-----------------------------------------------------------------------------
+//Prompt > Main ---------------------------------------------------------------
+//-----------------------------------------------------------------------------
 button.addEventListener('click', getName);
 function getName(){
   prompt.classList.add('noDisplay');
@@ -19,19 +21,28 @@ function getName(){
   displayName.innerText = inputName.value;
 };
 
+//-----------------------------------------------------------------------------
+//Add Listeners on addTodo ----------------------------------------------------
+//-----------------------------------------------------------------------------
 function addListeners(){
   let listItems = document.querySelectorAll('.list-item');
   for(let x = 0; x < listItems.length; x++){
+    //Remove
     listItems[x].children[0].addEventListener('click', () => {
       listItems[x].remove();
     });
+    //Stike
     listItems[x].children[2].addEventListener('click', () => {
       listItems[x].children[1].classList.add('strike');
       listItems[x].children[2].style.color = "green";
     });
+    //Drag start & end
+    listItems[x].addEventListener("dragstart", dragStartHandler);
+    listItems[x].addEventListener("dragend", dragEndHandler);
   };
 };
 
+let count = 0;
 buttonNew.addEventListener('click', addTodo);
 function addTodo(){
   if(!inputTodo.value){
@@ -41,7 +52,26 @@ function addTodo(){
     inputTodo.classList.remove('emptyEffect');
     inputTodo.setAttribute('placeholder', "add todos!");
     //Add Item to List
-    list.insertAdjacentHTML('beforeend', listItem);
+    if(count >= 0 ){
+      let listItem = document.createElement('div');
+      listItem.setAttribute('class', 'list-item');
+      listItem.setAttribute('draggable', 'true');
+      let span1 = document.createElement('span');
+      span1.setAttribute('class', 'fas fa-trash-alt');
+      let paragraph = document.createElement('p');
+      paragraph.setAttribute('class', 'insert');
+      let span2 = document.createElement('span');
+      span2.setAttribute('class', 'far fa-check-circle');
+      listItem.appendChild(span1);
+      listItem.appendChild(paragraph);
+      listItem.appendChild(span2);
+      listItem.setAttribute('id', count);
+
+      list.insertAdjacentElement('beforeend', listItem);
+
+      count++;
+    };
+
     let insert = document.querySelectorAll('.insert');
     insert[insert.length - 1].innerText = inputTodo.value;
     //Make Blank
@@ -49,4 +79,50 @@ function addTodo(){
 
     addListeners();
   };
+};
+
+//Drag Functions
+//-----------------------------------------------------------------------------
+//Add Function to Target (div)
+function dragStartHandler(e){
+
+  e.dataTransfer.setData('text/plain', e.target.id);
+  e.dataTransfer.dropEffect = 'move';
+
+  //Make Original not Visible (avoid double effect)
+  setTimeout( () => {
+    this.classList.add('visible');
+  }, 0);
+
+};
+
+function dragEndHandler(e){
+  this.classList.remove('visible');
+};
+
+//Initialize Drop Zones
+const start = document.getElementById('js-start');
+const end = document.getElementById('js-end');
+window.addEventListener('DOMContentLoaded', () => {
+
+  start.addEventListener("dragover", dragOverHandler);
+  end.addEventListener("dragover", dragOverHandler);
+  end.addEventListener("drop", dropHandler);
+  start.addEventListener("drop", dropHandler);
+
+});
+
+//Drop Zone Functions
+function dragOverHandler(e){
+  e.preventDefault();
+  e.dataTransfer.dropEffect = 'move';
+};
+
+function dropHandler(e){
+  e.preventDefault();
+  var elID = e.dataTransfer.getData('text/plain');
+  var element = document.getElementById(elID);
+  this.appendChild(element);
+  //Make it Visible Again
+  element.classList.remove('visible');
 };
