@@ -36,12 +36,15 @@ function addListeners(){
       listItems[x].children[1].classList.add('strike');
       listItems[x].children[2].style.color = "green";
     });
-    //Drag start & end
+    //Drag Properties
     listItems[x].addEventListener("dragstart", dragStartHandler);
     listItems[x].addEventListener("dragend", dragEndHandler);
   };
 };
 
+//-----------------------------------------------------------------------------
+//Add Todo to Page on Click ---------------------------------------------------
+//-----------------------------------------------------------------------------
 let count = 0;
 buttonNew.addEventListener('click', addTodo);
 function addTodo(){
@@ -71,19 +74,19 @@ function addTodo(){
 
       count++;
     };
-
     let insert = document.querySelectorAll('.insert');
     insert[insert.length - 1].innerText = inputTodo.value;
     //Make Blank
     inputTodo.value = "";
-
+    //Rerun to Add Listeners to new Items
     addListeners();
   };
 };
 
-//Drag Functions
 //-----------------------------------------------------------------------------
-//Add Function to Target (div)
+//Drag Functions --------------------------------------------------------------
+//-----------------------------------------------------------------------------
+//Add Function to Target (divs)
 function dragStartHandler(e){
 
   e.dataTransfer.setData('text/plain', e.target.id);
