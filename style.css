@@ -86,6 +86,7 @@ main > h1 {
   text-align: center;
 }
 main > #js-start {
+  min-height: 100px;
   grid-column: 1 / 2;
   background-color: lightblue;
 }
