@@ -90,7 +90,15 @@ main {
   grid-row-gap: 1em;
   grid-column-gap: 2em;
 }
+main > h1 > span {
+  font-size: 4rem;
+  font-weight: 300;
+}
 main > h1 {
+  font-size: 4rem;
+  font-weight: 300;
+  margin-bottom: .5em;
+
   grid-column: 1 / 3;
   text-align: center;
 }
@@ -206,6 +214,18 @@ main > #js-end > .list-item > p::after {
 main > #js-end > .list-item > span:nth-child(3) {
   color: var(--success);
 }
+#js-reset {
+  justify-self: center;
+  width: 50%;
+  border-radius: 3px;
+  font-size: 1.2rem;
+  border: 1px solid var(--offsetAccent);
+  color: var(--offsetAccent);
+}
+#js-reset:hover {
+  border: 1px solid var(--text);
+  color: var(--text);
+}
 
 /* ------------------------------------------------------------------------- */
 /* UTILITIES --------------------------------------------------------------- */
@@ -215,18 +235,6 @@ main > #js-end > .list-item > span:nth-child(3) {
 }
 .emptyEffect{
   border: 1px solid red;
-}
-.strike {
-  position: relative;
-  color: grey;
-}
-.strike::after {
-  position: absolute;
-  content: '';
-  top: 50%;
-  left: 0;
-  width: 100%;
-  border: 1px solid grey;
 }
 i {
   font-size: 1.5rem;
