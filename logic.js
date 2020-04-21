@@ -16,10 +16,14 @@ let list = document.getElementById('js-start');
 //-----------------------------------------------------------------------------
 button.addEventListener('click', getName);
 function getName(e){
-  e.preventDefault();
-  prompt.classList.add('noDisplay');
-  todo.classList.remove('noDisplay');
-  displayName.innerText = inputName.value;
+  if(!inputName.value){
+    inputName.setAttribute('placeholder', 'please enter a name :)');
+  } else {
+    e.preventDefault();
+    prompt.classList.add('noDisplay');
+    todo.classList.remove('noDisplay');
+    displayName.innerText = inputName.value;
+  };
 };
 
 //-----------------------------------------------------------------------------
