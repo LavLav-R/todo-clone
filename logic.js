@@ -8,6 +8,18 @@ let todo = document.getElementById('js-todo');
 let inputTodo = document.getElementById('js-input-todo');
 let buttonNew = document.getElementById('js-button-new');
 
+//User Object + Set Local Storage
+let user = {
+  name: "",
+  dailies: []
+};
+//Check if Local Storage Data Already Exists
+if(!window.localStorage.getItem('data')){
+  window.localStorage.setItem('data', JSON.stringify(user));
+} else {
+  console.log("Continue as Normal");
+};
+
 //Manipulation
 //-----------------------------------------------------------------------------
 //Prompt > Main ---------------------------------------------------------------
@@ -21,6 +33,10 @@ function getName(e){
     prompt.classList.add('noDisplay');
     todo.classList.remove('noDisplay');
     displayName.innerText = inputName.value;
+    //Get Local Storage to Update Name
+    let data = JSON.parse(window.localStorage.getItem('data'));
+    data.name = inputName.value;
+    window.localStorage.setItem('data', JSON.stringify(data));
   };
 };
 
@@ -80,6 +96,10 @@ function addTodo(){
     //Only Insert New Items in Start
     let startList = start.querySelectorAll('.insert');
     startList[startList.length - 1].innerText = inputTodo.value;
+    //Get Local Storage to Update Dailies
+    let data = JSON.parse(window.localStorage.getItem('data'));
+    data.dailies.push(inputTodo.value);
+    window.localStorage.setItem('data', JSON.stringify(data));
     //Make Parent change Height
     let setHeight = start.offsetHeight + 35;
     start.style.height = `${setHeight}px`;
