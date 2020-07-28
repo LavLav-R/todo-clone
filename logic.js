@@ -201,5 +201,11 @@ if(!window.localStorage.getItem('data')){
   window.localStorage.setItem('data', JSON.stringify(user));
 } else {
   console.log("Continue as Normal");
+  //Skip Prompt with Name Update from LocalStorage
+  let data = JSON.parse(window.localStorage.getItem('data'));
+  prompt.classList.add('noDisplay');
+  todo.classList.remove('noDisplay');
+  displayName.innerText = data.name;
+  //Execute Function to Add Data from LocalStorage
   addTodoFromLocal();
 };
