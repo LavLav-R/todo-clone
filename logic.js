@@ -13,12 +13,6 @@ let user = {
   name: "",
   dailies: []
 };
-//Check if Local Storage Data Already Exists
-if(!window.localStorage.getItem('data')){
-  window.localStorage.setItem('data', JSON.stringify(user));
-} else {
-  console.log("Continue as Normal");
-};
 
 //Manipulation
 //-----------------------------------------------------------------------------
@@ -37,6 +31,39 @@ function getName(e){
     let data = JSON.parse(window.localStorage.getItem('data'));
     data.name = inputName.value;
     window.localStorage.setItem('data', JSON.stringify(data));
+  };
+};
+
+//-----------------------------------------------------------------------------
+//Add Dailies from LocalStorage -----------------------------------------------
+//-----------------------------------------------------------------------------
+function addTodoFromLocal(){
+  let data = JSON.parse(window.localStorage.getItem('data'));
+  for(let el of data.dailies){
+    if(count >= 0 ){
+      let listItem = document.createElement('div');
+      listItem.setAttribute('class', 'list-item');
+      listItem.setAttribute('draggable', 'true');
+      let span1 = document.createElement('span');
+      span1.setAttribute('class', 'fas fa-trash-alt');
+      let paragraph = document.createElement('p');
+      paragraph.setAttribute('class', 'insert');
+      let span2 = document.createElement('span');
+      span2.setAttribute('class', 'far fa-check-circle');
+      listItem.appendChild(span1);
+      listItem.appendChild(paragraph);
+      listItem.appendChild(span2);
+      listItem.setAttribute('id', count);
+
+      start.insertAdjacentElement('beforeend', listItem);
+
+      count++;
+    };
+    //Only Insert Element with Info from LocalStorage
+    let startList = start.querySelectorAll('.insert');
+    startList[startList.length - 1].innerText = el;
+    //Rerun to Add Listeners to new Items
+    addListeners();
   };
 };
 
@@ -73,7 +100,7 @@ function addTodo(){
   } else {
     inputTodo.classList.remove('emptyEffect');
     inputTodo.setAttribute('placeholder', "add todos!");
-    //Add Item to List
+    //Create Element + Add Item to List
     if(count >= 0 ){
       let listItem = document.createElement('div');
       listItem.setAttribute('class', 'list-item');
@@ -167,4 +194,12 @@ function reset(){
   for(let x = 0; x < endList.length; x++){
     start.appendChild(endList[x]);
   };
+};
+
+//Check if Local Storage Data Already Exists
+if(!window.localStorage.getItem('data')){
+  window.localStorage.setItem('data', JSON.stringify(user));
+} else {
+  console.log("Continue as Normal");
+  addTodoFromLocal();
 };
